@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=vyavasaay
+Comment=This is a free software project under development which will help diagnostic centre in managing their lab activity like report generation, doctors incentive with graded access control to admin and the technician.We require you not to fully depend on it as it is under development and to keep a back up of your center report on other sources.
+Exec=vyavasaay
+Icon=${SNAP}/meta/gui/vyavasaay.png
+Terminal=false
+Type=Application
+Categories=Finance;
