@@ -125,7 +125,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
               CircleAvatar(
                 radius: 300,
                 backgroundColor: Colors.transparent,
-                child: Image.asset('assets/vyavasaay.png'),
+                child: Image.asset('assets/app_icon.png'),
               ),
               AnimatedTextKit(
                 animatedTexts: [
