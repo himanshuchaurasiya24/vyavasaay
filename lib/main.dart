@@ -60,16 +60,16 @@ class MyApp extends StatelessWidget {
           ),
           textButtonTheme: TextButtonThemeData(
             style: ButtonStyle(
-              overlayColor: MaterialStatePropertyAll(btnColor),
-              foregroundColor: const MaterialStatePropertyAll(
+              overlayColor: WidgetStatePropertyAll(btnColor),
+              foregroundColor: const WidgetStatePropertyAll(
                 Colors.black,
               ),
             ),
           ),
           checkboxTheme: CheckboxThemeData(
-            overlayColor: MaterialStatePropertyAll(primaryColorLite),
-            checkColor: MaterialStatePropertyAll(btnColor),
-            fillColor: MaterialStatePropertyAll(primaryColorDark),
+            overlayColor: WidgetStatePropertyAll(primaryColorLite),
+            checkColor: WidgetStatePropertyAll(btnColor),
+            fillColor: WidgetStatePropertyAll(primaryColorDark),
           ),
           colorScheme: ColorScheme.fromSeed(
             seedColor: primaryColorLite,

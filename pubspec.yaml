@@ -54,6 +54,7 @@ dependencies:
   pdf: ^3.10.8
   open_filex: ^4.4.0
   sqflite: ^2.3.3+1
+  path: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -11,7 +11,7 @@ slots:
   dbus-vyavasaay: # adjust accordingly to your app name
     interface: dbus
     bus: session
-    name: com.example # adjust accordingly to your app name and
+    name: com.vyavasaay # adjust accordingly to your app name and
 
 apps:
   vyavasaay:

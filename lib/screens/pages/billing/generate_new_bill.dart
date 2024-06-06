@@ -415,7 +415,7 @@ class _GenerateNewBillState extends State<GenerateNewBill> {
             data: ThemeData().copyWith(
               colorScheme: ColorScheme.light(
                 primary: btnColor,
-                onBackground: primaryColorLite,
+                onSurface: primaryColorLite,
               ),
             ),
             child: child!);
