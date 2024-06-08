@@ -28,7 +28,7 @@ class AboutThisApp extends StatelessWidget {
               animatedTexts: [
                 WavyAnimatedText(
                   speed: const Duration(milliseconds: 71),
-                  'Vyavasaay v1.0',
+                  'Vyavasaay v1.1',
                   textStyle: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 100,
