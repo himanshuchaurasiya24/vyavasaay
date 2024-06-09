@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   window_size
+  windows_notification
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
