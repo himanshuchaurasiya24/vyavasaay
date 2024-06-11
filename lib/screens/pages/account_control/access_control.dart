@@ -8,6 +8,7 @@ import 'package:vyavasaay/screens/pages/account_control/change_account_details.d
 import 'package:vyavasaay/screens/pages/account_control/create_account.dart';
 import 'package:vyavasaay/utils/constants.dart';
 import 'package:vyavasaay/widgets/custom_floating_action_button.dart';
+import 'package:vyavasaay/widgets/custom_page_route.dart';
 
 class AccessControl extends StatefulWidget {
   const AccessControl({super.key});
@@ -35,10 +36,13 @@ class _AccessControlState extends State<AccessControl> {
       await databaseHelper.deleteEverything().then((value) {
         return Navigator.pushReplacement(
           context,
-          MaterialPageRoute(
-            builder: (context) {
-              return const SplashScreen();
-            },
+          // MaterialPageRoute(
+          //   builder: (context) {
+          //     return const SplashScreen();
+          //   },
+          // ),
+          MyCustomPageRoute(
+            route: const SplashScreen(),
           ),
         );
       });
@@ -47,10 +51,13 @@ class _AccessControlState extends State<AccessControl> {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(
-            builder: (context) {
-              return const LoginScreen();
-            },
+          // MaterialPageRoute(
+          //   builder: (context) {
+          //     return const LoginScreen();
+          //   },
+          // ),
+          MyCustomPageRoute(
+            route: const LoginScreen(),
           ),
         );
       }
@@ -147,15 +154,24 @@ class _AccessControlState extends State<AccessControl> {
                                                   onPressed: () async {
                                                     await Navigator.push(
                                                       context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) {
-                                                          return ChangeAccountDetails(
-                                                            userModel: snapshot
-                                                                .data![index],
-                                                            adminAccountLength:
-                                                                adminAccountLength,
-                                                          );
-                                                        },
+                                                      // MaterialPageRoute(
+                                                      //   builder: (context) {
+                                                      //     return ChangeAccountDetails(
+                                                      //       userModel: snapshot
+                                                      //           .data![index],
+                                                      //       adminAccountLength:
+                                                      //           adminAccountLength,
+                                                      //     );
+                                                      //   },
+                                                      // ),
+                                                      MyCustomPageRoute(
+                                                        route:
+                                                            ChangeAccountDetails(
+                                                          userModel: snapshot
+                                                              .data![index],
+                                                          adminAccountLength:
+                                                              adminAccountLength,
+                                                        ),
                                                       ),
                                                     ).then((value) =>
                                                         setState(() {}));
@@ -328,13 +344,20 @@ class _AccessControlState extends State<AccessControl> {
                                                   onPressed: () async {
                                                     await Navigator.push(
                                                       context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) {
-                                                          return ChangeAccountDetails(
-                                                            userModel: snapshot
-                                                                .data![index],
-                                                          );
-                                                        },
+                                                      // MaterialPageRoute(
+                                                      //   builder: (context) {
+                                                      //     return ChangeAccountDetails(
+                                                      //       userModel: snapshot
+                                                      //           .data![index],
+                                                      //     );
+                                                      //   },
+                                                      // ),
+                                                      MyCustomPageRoute(
+                                                        route:
+                                                            ChangeAccountDetails(
+                                                          userModel: snapshot
+                                                              .data![index],
+                                                        ),
                                                       ),
                                                     ).then((value) =>
                                                         setState(() {}));
@@ -449,10 +472,13 @@ class _AccessControlState extends State<AccessControl> {
               onTap: () async {
                 await Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const CreateAccount();
-                    },
+                  // MaterialPageRoute(
+                  //   builder: (context) {
+                  //     return const CreateAccount();
+                  //   },
+                  // ),
+                  MyCustomPageRoute(
+                    route: const CreateAccount(),
                   ),
                 ).then((value) => setState(() {}));
               },

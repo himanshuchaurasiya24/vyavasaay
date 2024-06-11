@@ -20,7 +20,7 @@ class AboutThisApp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/vyavasaay.png',
+              'assets/app_icon.png',
               height: 250,
               width: 250,
             ),

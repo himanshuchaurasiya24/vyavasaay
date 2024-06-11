@@ -9,6 +9,7 @@ import 'package:vyavasaay/utils/constants.dart';
 import 'package:vyavasaay/widgets/container_button.dart';
 import 'package:vyavasaay/widgets/custom_details_card.dart';
 import 'package:vyavasaay/widgets/custom_floating_action_button.dart';
+import 'package:vyavasaay/widgets/custom_page_route.dart';
 import 'package:vyavasaay/widgets/custom_textfield.dart';
 import 'package:vyavasaay/widgets/patient_details_child.dart';
 
@@ -261,10 +262,13 @@ class _BillHistoryState extends State<BillHistory> {
               onTap: () async {
                 await Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const GenerateNewBill();
-                    },
+                  // MaterialPageRoute(
+                  //   builder: (context) {
+                  //     return const GenerateNewBill();
+                  //   },
+                  // ),
+                  MyCustomPageRoute(
+                    route: const GenerateNewBill(),
                   ),
                 ).then((value) => setState(() {}));
               },

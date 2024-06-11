@@ -6,6 +6,7 @@ import 'package:vyavasaay/model/user_model.dart';
 import 'package:vyavasaay/screens/login_signup_screens/login_screen.dart';
 import 'package:vyavasaay/utils/constants.dart';
 import 'package:vyavasaay/widgets/container_button.dart';
+import 'package:vyavasaay/widgets/custom_page_route.dart';
 import 'package:vyavasaay/widgets/custom_textfield.dart';
 import 'package:vyavasaay/widgets/update_screen_widget.dart';
 
@@ -208,10 +209,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             setCenterName(),
                                             Navigator.pushReplacement(
                                               context,
-                                              MaterialPageRoute(
-                                                builder: (context) {
-                                                  return const LoginScreen();
-                                                },
+                                              // MaterialPageRoute(
+                                              //   builder: (context) {
+                                              //     return const LoginScreen();
+                                              //   },
+                                              // ),
+                                              MyCustomPageRoute(
+                                                route: const LoginScreen(),
                                               ),
                                             ),
                                           }
@@ -251,10 +255,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           .clearMaterialBanners();
                                       Navigator.pushReplacement(
                                         context,
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return const LoginScreen();
-                                          },
+                                        // MaterialPageRoute(
+                                        //   builder: (context) {
+                                        //     return const LoginScreen();
+                                        //   },
+                                        // ),
+                                        MyCustomPageRoute(
+                                          route: const LoginScreen(),
                                         ),
                                       );
                                     },

@@ -9,6 +9,7 @@ import 'package:vyavasaay/screens/pages/incentive/show_incentive.dart';
 import 'package:vyavasaay/utils/constants.dart';
 import 'package:vyavasaay/widgets/container_button.dart';
 import 'package:vyavasaay/widgets/custom_floating_action_button.dart';
+import 'package:vyavasaay/widgets/custom_page_route.dart';
 import 'package:vyavasaay/widgets/custom_textfield.dart';
 
 class GenerateIncentive extends StatefulWidget {
@@ -112,26 +113,45 @@ class _GenerateIncentiveState extends State<GenerateIncentive> {
     if (!mounted) return;
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) {
-          return ShowIncentive(
-            incentiveModelList: incetiveDetailsList,
-            pName: pName,
-            date: date,
-            age: age,
-            sex: sex,
-            type: type,
-            remark: remark,
-            total: total,
-            paid: paid,
-            incentive: incentive,
-            incentivePerc: incentivePerc,
-            discountByDoc: discountByDoc,
-            discountByCenter: discountByCenter,
-            dName: dName,
-            orientation: orientationController.text,
-          );
-        },
+      // MaterialPageRoute(
+      //   builder: (context) {
+      //     return ShowIncentive(
+      //       incentiveModelList: incetiveDetailsList,
+      //       pName: pName,
+      //       date: date,
+      //       age: age,
+      //       sex: sex,
+      //       type: type,
+      //       remark: remark,
+      //       total: total,
+      //       paid: paid,
+      //       incentive: incentive,
+      //       incentivePerc: incentivePerc,
+      //       discountByDoc: discountByDoc,
+      //       discountByCenter: discountByCenter,
+      //       dName: dName,
+      //       orientation: orientationController.text,
+      //     );
+      //   },
+      // ),
+      MyCustomPageRoute(
+        route: ShowIncentive(
+          incentiveModelList: incetiveDetailsList,
+          pName: pName,
+          date: date,
+          age: age,
+          sex: sex,
+          type: type,
+          remark: remark,
+          total: total,
+          paid: paid,
+          incentive: incentive,
+          incentivePerc: incentivePerc,
+          discountByDoc: discountByDoc,
+          discountByCenter: discountByCenter,
+          dName: dName,
+          orientation: orientationController.text,
+        ),
       ),
     );
   }

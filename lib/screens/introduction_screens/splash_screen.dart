@@ -8,6 +8,7 @@ import 'package:vyavasaay/database/database_helper.dart';
 import 'package:vyavasaay/screens/introduction_screens/introduction_screen.dart';
 import 'package:vyavasaay/screens/login_signup_screens/login_screen.dart';
 import 'package:vyavasaay/screens/main_screen/home_screen.dart';
+import 'package:vyavasaay/widgets/custom_page_route.dart';
 
 final idProvider = StateProvider<int>((ref) => 0);
 final nameProvider = StateProvider<String>((ref) => 'null');
@@ -53,10 +54,13 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       await prefs.clear().then((value) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(
-            builder: (context) {
-              return const IntroductionScreen();
-            },
+          // MaterialPageRoute(
+          //   builder: (context) {
+          //     return const IntroductionScreen();
+          //   },
+          // ),
+          MyCustomPageRoute(
+            route: const IntroductionScreen(),
           ),
         );
       });
@@ -70,14 +74,20 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
           () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return HomeScreen(
-                    centerName: centerName,
+              // MaterialPageRoute(
+              //   builder: (context) {
+              //     return HomeScreen(
+              //       centerName: centerName,
+              //       name: loggedInName,
+              //       logInType: logInType,
+              //     );
+              //   },
+              // ),
+              MyCustomPageRoute(
+                route: HomeScreen(
                     name: loggedInName,
                     logInType: logInType,
-                  );
-                },
+                    centerName: centerName),
               ),
             );
           },
@@ -88,10 +98,13 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
           () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const LoginScreen();
-                },
+              // MaterialPageRoute(
+              //   builder: (context) {
+              //     return const LoginScreen();
+              //   },
+              // ),
+              MyCustomPageRoute(
+                route: const LoginScreen(),
               ),
             );
           },
@@ -103,10 +116,13 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
         () {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(
-              builder: (context) {
-                return const IntroductionScreen();
-              },
+            // MaterialPageRoute(
+            //   builder: (context) {
+            //     return const IntroductionScreen();
+            //   },
+            // ),
+            MyCustomPageRoute(
+              route: const IntroductionScreen(),
             ),
           );
         },

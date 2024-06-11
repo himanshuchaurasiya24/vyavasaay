@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vyavasaay/database/database_helper.dart';
 import 'package:vyavasaay/screens/introduction_screens/splash_screen.dart';
 import 'package:vyavasaay/utils/constants.dart';
+import 'package:vyavasaay/widgets/custom_page_route.dart';
 
 class Logout extends StatefulWidget {
   const Logout({super.key});
@@ -28,10 +29,13 @@ class _LogoutState extends State<Logout> {
   void navigate(BuildContext context) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(
-        builder: (context) {
-          return const SplashScreen();
-        },
+      // MaterialPageRoute(
+      //   builder: (context) {
+      //     return const SplashScreen();
+      //   },
+      // ),
+      MyCustomPageRoute(
+        route: const SplashScreen(),
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:vyavasaay/screens/main_screen/home_screen.dart';
 import 'package:vyavasaay/screens/login_signup_screens/signup_screen.dart';
 import 'package:vyavasaay/utils/constants.dart';
 import 'package:vyavasaay/widgets/container_button.dart';
+import 'package:vyavasaay/widgets/custom_page_route.dart';
 import 'package:vyavasaay/widgets/custom_textfield.dart';
 import 'package:vyavasaay/widgets/update_screen_widget.dart';
 
@@ -190,14 +191,21 @@ class _LoginScreenState extends State<LoginScreen> {
                                       .then(
                                           (value) => Navigator.pushReplacement(
                                                 context,
-                                                MaterialPageRoute(
-                                                  builder: (context) {
-                                                    return HomeScreen(
-                                                      name: name,
-                                                      logInType: loginType,
-                                                      centerName: centerName,
-                                                    );
-                                                  },
+                                                // MaterialPageRoute(
+                                                //   builder: (context) {
+                                                //     return HomeScreen(
+                                                //       name: name,
+                                                //       logInType: loginType,
+                                                //       centerName: centerName,
+                                                //     );
+                                                //   },
+                                                // ),
+                                                MyCustomPageRoute(
+                                                  route: HomeScreen(
+                                                    name: name,
+                                                    logInType: loginType,
+                                                    centerName: centerName,
+                                                  ),
                                                 ),
                                               ));
                                 } else {
@@ -232,10 +240,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                           .clearMaterialBanners();
                                       Navigator.pushReplacement(
                                         context,
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return const SignUpScreen();
-                                          },
+                                        // MaterialPageRoute(
+                                        //   builder: (context) {
+                                        //     return const SignUpScreen();
+                                        //   },
+                                        // ),
+                                        MyCustomPageRoute(
+                                          route: const SignUpScreen(),
                                         ),
                                       );
                                     },

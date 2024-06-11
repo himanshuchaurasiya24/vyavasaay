@@ -5,6 +5,7 @@ import 'package:vyavasaay/screens/introduction_screens/intro_3.dart';
 import 'package:vyavasaay/screens/introduction_screens/intro_4.dart';
 import 'package:vyavasaay/screens/login_signup_screens/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vyavasaay/widgets/custom_page_route.dart';
 
 class IntroductionScreen extends StatefulWidget {
   const IntroductionScreen({super.key});
@@ -44,10 +45,13 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                 intro();
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const LoginScreen();
-                    },
+                  // MaterialPageRoute(
+                  //   builder: (context) {
+                  //     return const LoginScreen();
+                  //   },
+                  // ),
+                  MyCustomPageRoute(
+                    route: const LoginScreen(),
                   ),
                 );
               }
