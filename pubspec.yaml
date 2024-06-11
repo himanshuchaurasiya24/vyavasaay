@@ -55,7 +55,6 @@ dependencies:
   open_filex: ^4.4.0
   path: any
   flutter_distributor: ^0.0.2
-  windows_notification: ^1.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
