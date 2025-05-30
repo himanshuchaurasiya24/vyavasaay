@@ -14,7 +14,7 @@ import 'package:vyavasaay/model/user_model.dart';
 Database? _database;
 
 class DatabaseHelper {
-  final databaseName = 'vyavasaay.db';
+  final databaseName = 'vyavasaay_database_do_no_delete.db';
   String userTable = 'userTable';
   String doctorTable = 'doctorTable';
   String patientTable = 'patientTable';

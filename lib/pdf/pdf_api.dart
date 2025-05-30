@@ -1,6 +1,9 @@
+// ignore_for_file: unused_import
+
 import 'dart:io';
 import 'package:intl/intl.dart';
-import 'package:open_filex/open_filex.dart';
+import 'package:url_launcher/url_launcher.dart';
+// import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -476,8 +479,18 @@ class PdfApi {
     return file;
   }
 
-  static Future openFile({required File file}) async {
-    final url = file.path;
-    await OpenFilex.open(url);
+  // static Future openFile({required File file}) async {
+  //   final url = file.path;
+  //   await OpenFilex.open(url);
+  // }
+  static Future<void> openFile({required String path}) async {
+    if (Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
+      final fileUri = Uri.file(path);
+      if (!await launchUrl(fileUri)) {
+        throw 'Could not open file $path';
+      }
+    } else {
+      // Use open_filex or any other mobile plugin
+    }
   }
 }

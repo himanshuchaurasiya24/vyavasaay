@@ -191,15 +191,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                       .then(
                                           (value) => Navigator.pushReplacement(
                                                 context,
-                                                // MaterialPageRoute(
-                                                //   builder: (context) {
-                                                //     return HomeScreen(
-                                                //       name: name,
-                                                //       logInType: loginType,
-                                                //       centerName: centerName,
-                                                //     );
-                                                //   },
-                                                // ),
                                                 MyCustomPageRoute(
                                                   route: HomeScreen(
                                                     name: name,

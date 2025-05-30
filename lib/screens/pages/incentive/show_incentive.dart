@@ -83,7 +83,9 @@ class _ShowIncentiveState extends State<ShowIncentive> {
             dName: widget.dName,
             orientation: widget.orientation,
           );
-          PdfApi.openFile(file: pdfFile);
+          // print('PDF File: ${pdfFile.path}');
+          // PdfApi.openFile(file: pdfFile);
+          PdfApi.openFile(path: pdfFile.path);
         },
         label: Text(
           'Generate PDF',

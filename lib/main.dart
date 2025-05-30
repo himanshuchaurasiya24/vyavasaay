@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,7 +7,6 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:vyavasaay/screens/introduction_screens/splash_screen.dart';
 import 'package:vyavasaay/utils/constants.dart';
 import 'package:window_size/window_size.dart';
-
 late SharedPreferences pref;
 
 void main() async {
