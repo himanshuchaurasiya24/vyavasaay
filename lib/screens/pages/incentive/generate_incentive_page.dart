@@ -34,7 +34,6 @@ class _GenerateIncentiveState extends State<GenerateIncentive> {
   bool discountByCenter = false;
   bool dName = false;
   final DatabaseHelper databaseHelper = DatabaseHelper();
-
   final docIdController = TextEditingController();
   final docNameController = TextEditingController();
   final monthController = TextEditingController();
@@ -71,6 +70,9 @@ class _GenerateIncentiveState extends State<GenerateIncentive> {
   }
 
   void generateIncentive() async {
+    setState(() {
+      isLoading = true;
+    });
     List<IncentiveModel> incetiveDetailsList = [];
     for (int i = 0; i < doctorIdList.length; i++) {
       List<PatientModel> patientModel =
@@ -113,27 +115,6 @@ class _GenerateIncentiveState extends State<GenerateIncentive> {
     if (!mounted) return;
     Navigator.push(
       context,
-      // MaterialPageRoute(
-      //   builder: (context) {
-      //     return ShowIncentive(
-      //       incentiveModelList: incetiveDetailsList,
-      //       pName: pName,
-      //       date: date,
-      //       age: age,
-      //       sex: sex,
-      //       type: type,
-      //       remark: remark,
-      //       total: total,
-      //       paid: paid,
-      //       incentive: incentive,
-      //       incentivePerc: incentivePerc,
-      //       discountByDoc: discountByDoc,
-      //       discountByCenter: discountByCenter,
-      //       dName: dName,
-      //       orientation: orientationController.text,
-      //     );
-      //   },
-      // ),
       MyCustomPageRoute(
         route: ShowIncentive(
           incentiveModelList: incetiveDetailsList,
@@ -467,285 +448,117 @@ class _GenerateIncentiveState extends State<GenerateIncentive> {
                       textAlign: TextAlign.center,
                     ),
                     Gap(defaultSize),
-                    Container(
-                      height: getDeviceHeight(context: context) * 0.13,
-                      width: getDeviceWidth(context: context) * 0.5,
-                      padding: EdgeInsets.all(defaultSize),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(defaultBorderRadius),
-                        color: primaryColorLite,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Age',
-                            style: patientHeaderSmall,
-                          ),
-                          Checkbox(
-                            value: age,
-                            onChanged: (value) {
-                              setState(() {
-                                age = value!;
-                              });
-                            },
-                          )
-                        ],
-                      ),
+                     incentiveItems(
+                        title: 'Age',
+                        value: age,
+                        onChanged: (value) {
+                          setState(() {
+                            age = value!;
+                          });
+                        },
+                        context: context,
+                        setState: setState),
+                    Gap(defaultSize),
+                     incentiveItems(
+                        title: 'Sex',
+                        value: sex,
+                        onChanged: (value) {
+                          setState(() {
+                            sex = value!;
+                          });
+                        },
+                        context: context,
+                        setState: setState),
+                    Gap(defaultSize),
+                     incentiveItems(
+                        title: 'Remark',
+                        value: remark,
+                        onChanged: (value) {
+                          setState(() {
+                            remark = value!;
+                          });
+                        },
+                        context: context,
+                        setState: setState),
+                    Gap(defaultSize),
+                    incentiveItems(
+                        title: 'Total Amount',
+                        value: total,
+                        onChanged: (value) {
+                          setState(() {
+                            total = value!;
+                          });
+                        },
+                        context: context,
+                        setState: setState),
+                    Gap(defaultSize),
+                     incentiveItems(
+                        title: 'Type',
+                        value: type,
+                        onChanged: (value) {
+                          setState(() {
+                            type = value!;
+                          });
+                        },
+                        context: context,
+                        setState: setState),
+                    Gap(defaultSize),
+                     incentiveItems(
+                        title: 'Paid',
+                        value: paid,
+                        onChanged: (value) {
+                          setState(() {
+                            paid = value!;
+                          });
+                        },
+                        context: context,
+                        setState: setState),
+                    Gap(defaultSize),
+                     incentiveItems(
+                        title: 'Incentive',
+                        value: incentive,
+                        onChanged: (value) {
+                          setState(() {
+                            incentive = value!;
+                          });
+                        },
+                        context: context,
+                        setState: setState),
+                    Gap(defaultSize),
+                    incentiveItems(
+                        title: 'Incentive Percentage',
+                        value: incentivePerc,
+                        onChanged: (value) {
+                          setState(() {
+                            incentivePerc = value!;
+                          });
+                        },
+                        context: context,
+                        setState: setState),
+                    Gap(defaultSize),
+                    incentiveItems(
+                        title: 'Discount by Doctor',
+                        value: discountByDoc,
+                        onChanged: (value) {
+                          setState(() {
+                            discountByDoc = value!;
+                          });
+                        },
+                        context: context,
+                        setState: setState),
+                    Gap(defaultSize),
+                    incentiveItems(
+                      title: 'Discount by Center',
+                      value: discountByCenter,
+                      onChanged: (value) {
+                        setState(() {
+                          discountByCenter = value!;
+                        });
+                      },
+                      context: context,
+                      setState: setState,
                     ),
                     Gap(defaultSize),
-                    Container(
-                      height: getDeviceHeight(context: context) * 0.13,
-                      width: getDeviceWidth(context: context) * 0.5,
-                      padding: EdgeInsets.all(defaultSize),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(defaultBorderRadius),
-                        color: primaryColorLite,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Sex',
-                            style: patientHeaderSmall,
-                          ),
-                          Checkbox(
-                            value: sex,
-                            onChanged: (value) {
-                              setState(() {
-                                sex = value!;
-                              });
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    Gap(defaultSize),
-                    Container(
-                      height: getDeviceHeight(context: context) * 0.13,
-                      width: getDeviceWidth(context: context) * 0.5,
-                      padding: EdgeInsets.all(defaultSize),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(defaultBorderRadius),
-                        color: primaryColorLite,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Remark',
-                            style: patientHeaderSmall,
-                          ),
-                          Checkbox(
-                            value: remark,
-                            onChanged: (value) {
-                              setState(() {
-                                remark = value!;
-                              });
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    Gap(defaultSize),
-                    Container(
-                      height: getDeviceHeight(context: context) * 0.13,
-                      width: getDeviceWidth(context: context) * 0.5,
-                      padding: EdgeInsets.all(defaultSize),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(defaultBorderRadius),
-                        color: primaryColorLite,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Total',
-                            style: patientHeaderSmall,
-                          ),
-                          Checkbox(
-                            value: total,
-                            onChanged: (value) {
-                              setState(() {
-                                total = value!;
-                              });
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    Gap(defaultSize),
-                    Container(
-                      height: getDeviceHeight(context: context) * 0.13,
-                      width: getDeviceWidth(context: context) * 0.5,
-                      padding: EdgeInsets.all(defaultSize),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(defaultBorderRadius),
-                        color: primaryColorLite,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'type',
-                            style: patientHeaderSmall,
-                          ),
-                          Checkbox(
-                            value: type,
-                            onChanged: (value) {
-                              setState(() {
-                                type = value!;
-                              });
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    Gap(defaultSize),
-                    Container(
-                      height: getDeviceHeight(context: context) * 0.13,
-                      width: getDeviceWidth(context: context) * 0.5,
-                      padding: EdgeInsets.all(defaultSize),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(defaultBorderRadius),
-                        color: primaryColorLite,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Paid',
-                            style: patientHeaderSmall,
-                          ),
-                          Checkbox(
-                            value: paid,
-                            onChanged: (value) {
-                              setState(() {
-                                paid = value!;
-                              });
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    Gap(defaultSize),
-                    Container(
-                      height: getDeviceHeight(context: context) * 0.13,
-                      width: getDeviceWidth(context: context) * 0.5,
-                      padding: EdgeInsets.all(defaultSize),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(defaultBorderRadius),
-                        color: primaryColorLite,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'incentive',
-                            style: patientHeaderSmall,
-                          ),
-                          Checkbox(
-                            value: incentive,
-                            onChanged: (value) {
-                              setState(() {
-                                incentive = value!;
-                              });
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    Gap(defaultSize),
-                    Container(
-                      height: getDeviceHeight(context: context) * 0.13,
-                      width: getDeviceWidth(context: context) * 0.5,
-                      padding: EdgeInsets.all(defaultSize),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(defaultBorderRadius),
-                        color: primaryColorLite,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'incentivePerc',
-                            style: patientHeaderSmall,
-                          ),
-                          Checkbox(
-                            value: incentivePerc,
-                            onChanged: (value) {
-                              setState(() {
-                                incentivePerc = value!;
-                              });
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    Gap(defaultSize),
-                    Container(
-                      height: getDeviceHeight(context: context) * 0.13,
-                      width: getDeviceWidth(context: context) * 0.5,
-                      padding: EdgeInsets.all(defaultSize),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(defaultBorderRadius),
-                        color: primaryColorLite,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'discountByDoc',
-                            style: patientHeaderSmall,
-                          ),
-                          Checkbox(
-                            value: discountByDoc,
-                            onChanged: (value) {
-                              setState(() {
-                                discountByDoc = value!;
-                              });
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    Gap(defaultSize),
-                    Container(
-                      height: getDeviceHeight(context: context) * 0.13,
-                      width: getDeviceWidth(context: context) * 0.5,
-                      padding: EdgeInsets.all(defaultSize),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(defaultBorderRadius),
-                        color: primaryColorLite,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'discountByCenter',
-                            style: patientHeaderSmall,
-                          ),
-                          Checkbox(
-                            value: discountByCenter,
-                            onChanged: (value) {
-                              setState(() {
-                                discountByCenter = value!;
-                              });
-                            },
-                          )
-                        ],
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -753,6 +566,40 @@ class _GenerateIncentiveState extends State<GenerateIncentive> {
           },
         );
       },
+    );
+  }
+
+  Container incentiveItems(
+      {required String title,
+      required bool value,
+      required Function onChanged,
+      required BuildContext context,
+      required StateSetter setState}) {
+    return Container(
+      height: getDeviceHeight(context: context) * 0.13,
+      width: getDeviceWidth(context: context) * 0.5,
+      padding: EdgeInsets.all(defaultSize),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(defaultBorderRadius),
+        color: primaryColorLite,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: patientHeaderSmall,
+          ),
+          Checkbox(
+            value: value,
+            onChanged: (value) {
+              setState(() {
+                onChanged(value);
+              });
+            },
+          )
+        ],
+      ),
     );
   }
 }

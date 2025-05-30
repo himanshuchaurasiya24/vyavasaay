@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -6,8 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vyavasaay/database/database_helper.dart';
 import 'package:vyavasaay/model/patient_model.dart';
+import 'package:vyavasaay/screens/pages/drawer_pages/dashboard.dart';
 import 'package:vyavasaay/utils/constants.dart';
-import 'package:vyavasaay/widgets/details_container.dart';
 
 class AccountDetails extends ConsumerStatefulWidget {
   const AccountDetails({super.key});
@@ -207,303 +206,44 @@ class _AccountDetailsState extends ConsumerState<AccountDetails> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'Total',
-                    childWidget: FutureBuilder(
-                      future: getMonthTotalBillingCount(month: getThisMonth()),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getMonthTotalBillingCount(month: getThisMonth()),
                   ),
                   Gap(defaultSize),
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'Ultrasound',
-                    childWidget: FutureBuilder(
-                      future: getMonthUltrasoundCount(month: getThisMonth()),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getMonthUltrasoundCount(month: getThisMonth()),
                   ),
                   Gap(defaultSize),
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'Pathology',
-                    childWidget: FutureBuilder(
-                      future: getMonthPathologyCount(month: getThisMonth()),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getMonthPathologyCount(month: getThisMonth()),
                   ),
                   Gap(defaultSize),
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'ECG',
-                    childWidget: FutureBuilder(
-                      future: getMonthECGCount(month: getThisMonth()),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getMonthECGCount(month: getThisMonth()),
                   ),
                   Gap(defaultSize),
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'X-Ray',
-                    childWidget: FutureBuilder(
-                      future: getMonthXRayCount(month: getThisMonth()),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getMonthXRayCount(month: getThisMonth()),
                   ),
                   Visibility(
                     visible: userType == 'Admin',
                     child: Gap(defaultSize),
                   ),
-                  Visibility(
-                    visible: userType == 'Admin',
-                    child: DetailsContainer(
+                  detailsContainer(
                       borderText: 'Incentive',
-                      childWidget: FutureBuilder(
-                        future:
-                            getMonthTotalIncentiveCount(month: getThisMonth()),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const Text(
-                              'Loading',
-                              style: TextStyle(
-                                fontSize: 50,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                          if (snapshot.hasError) {
-                            return const Text(
-                              'Error',
-                              style: TextStyle(
-                                fontSize: 100,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                          if (snapshot.hasData) {
-                            if (snapshot.data!.isEmpty) {
-                              return const Text(
-                                'No data found',
-                                style: TextStyle(
-                                  fontSize: 70,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              );
-                            }
-                          }
-                          return ClipRRect(
-                            borderRadius: BorderRadius.only(
-                                bottomLeft:
-                                    Radius.circular(defaultBorderRadius),
-                                bottomRight:
-                                    Radius.circular(defaultBorderRadius)),
-                            child: AnimatedTextKit(
-                              repeatForever: true,
-                              animatedTexts: [
-                                ColorizeAnimatedText(
-                                  snapshot.data!,
-                                  textStyle: TextStyle(
-                                    fontSize:
-                                        snapshot.data!.length > 7 ? 40 : 80,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  colors: colorizeColors,
-                                ),
-                              ],
-                              isRepeatingAnimation: true,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
+                      userType: userType,
+                      dataToBeFetched: () =>
+                          getMonthTotalIncentiveCount(month: getThisMonth()))
                 ],
               ),
             ),
@@ -521,305 +261,44 @@ class _AccountDetailsState extends ConsumerState<AccountDetails> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'Total',
-                    childWidget: FutureBuilder(
-                      future:
-                          getMonthTotalBillingCount(month: getPreviousMonth()),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getMonthTotalBillingCount(month: getPreviousMonth()),
                   ),
                   Gap(defaultSize),
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'Ultrasound',
-                    childWidget: FutureBuilder(
-                      future:
-                          getMonthUltrasoundCount(month: getPreviousMonth()),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getMonthUltrasoundCount(month: getPreviousMonth()),
                   ),
                   Gap(defaultSize),
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'Pathology',
-                    childWidget: FutureBuilder(
-                      future: getMonthPathologyCount(month: getPreviousMonth()),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getMonthPathologyCount(month: getPreviousMonth()),
                   ),
                   Gap(defaultSize),
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'ECG',
-                    childWidget: FutureBuilder(
-                      future: getMonthECGCount(month: getPreviousMonth()),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getMonthECGCount(month: getPreviousMonth()),
                   ),
                   Gap(defaultSize),
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'X-Ray',
-                    childWidget: FutureBuilder(
-                      future: getMonthXRayCount(month: getPreviousMonth()),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getMonthXRayCount(month: getPreviousMonth()),
                   ),
                   Visibility(
                     visible: userType == 'Admin',
                     child: Gap(defaultSize),
                   ),
-                  Visibility(
-                    visible: userType == 'Admin',
-                    child: DetailsContainer(
-                      borderText: 'Incentive',
-                      childWidget: FutureBuilder(
-                        future: getMonthTotalIncentiveCount(
-                            month: getPreviousMonth()),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const Text(
-                              'Loading',
-                              style: TextStyle(
-                                fontSize: 50,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                          if (snapshot.hasError) {
-                            return const Text(
-                              'Error',
-                              style: TextStyle(
-                                fontSize: 100,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                          if (snapshot.hasData) {
-                            if (snapshot.data!.isEmpty) {
-                              return const Text(
-                                'No data found',
-                                style: TextStyle(
-                                  fontSize: 70,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              );
-                            }
-                          }
-                          return ClipRRect(
-                            borderRadius: BorderRadius.only(
-                                bottomLeft:
-                                    Radius.circular(defaultBorderRadius),
-                                bottomRight:
-                                    Radius.circular(defaultBorderRadius)),
-                            child: AnimatedTextKit(
-                              repeatForever: true,
-                              animatedTexts: [
-                                ColorizeAnimatedText(
-                                  snapshot.data!,
-                                  textStyle: TextStyle(
-                                    fontSize:
-                                        snapshot.data!.length > 7 ? 40 : 80,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  colors: colorizeColors,
-                                ),
-                              ],
-                              isRepeatingAnimation: true,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
+                  detailsContainer(
+                      borderText: 'Incentive',                      userType: userType,
+
+                      dataToBeFetched: () => getMonthTotalIncentiveCount(
+                          month: getPreviousMonth()))
                 ],
               ),
             ),
@@ -837,302 +316,43 @@ class _AccountDetailsState extends ConsumerState<AccountDetails> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'Total',
-                    childWidget: FutureBuilder(
-                      future: getTotalBillingCount(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getTotalBillingCount(),
                   ),
                   Gap(defaultSize),
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'Ultrasound',
-                    childWidget: FutureBuilder(
-                      future: getTotalBillingUltrasound(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getTotalBillingUltrasound(),
                   ),
                   Gap(defaultSize),
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'Pathology',
-                    childWidget: FutureBuilder(
-                      future: getTotalBillingPathology(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getTotalBillingPathology(),
                   ),
                   Gap(defaultSize),
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'ECG',
-                    childWidget: FutureBuilder(
-                      future: getTotalBillingECG(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getTotalBillingECG(),
                   ),
                   Gap(defaultSize),
-                  DetailsContainer(
+                  detailsContainer(
                     borderText: 'X-Ray',
-                    childWidget: FutureBuilder(
-                      future: getTotalBillingXRay(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Text(
-                            'Loading',
-                            style: TextStyle(
-                              fontSize: 50,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasError) {
-                          return const Text(
-                            'Error',
-                            style: TextStyle(
-                              fontSize: 100,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          );
-                        }
-                        if (snapshot.hasData) {
-                          if (snapshot.data!.isEmpty) {
-                            return const Text(
-                              'No data found',
-                              style: TextStyle(
-                                fontSize: 70,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                        }
-                        return Text(
-                          snapshot.data!,
-                          style: const TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        );
-                      },
-                    ),
+                    dataToBeFetched: () =>
+                        getTotalBillingXRay(),
                   ),
                   Visibility(
                     visible: userType == 'Admin',
                     child: Gap(defaultSize),
                   ),
-                  Visibility(
-                    visible: userType == 'Admin',
-                    child: DetailsContainer(
+                  detailsContainer(
                       borderText: 'Incentive',
-                      childWidget: FutureBuilder(
-                        future: getTotalIncentiveCount(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const Text(
-                              'Loading',
-                              style: TextStyle(
-                                fontSize: 50,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                          if (snapshot.hasError) {
-                            return const Text(
-                              'Error',
-                              style: TextStyle(
-                                fontSize: 100,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          }
-                          if (snapshot.hasData) {
-                            if (snapshot.data!.isEmpty) {
-                              return const Text(
-                                'No data found',
-                                style: TextStyle(
-                                  fontSize: 70,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              );
-                            }
-                          }
-                          return ClipRRect(
-                            borderRadius: BorderRadius.only(
-                                bottomLeft:
-                                    Radius.circular(defaultBorderRadius),
-                                bottomRight:
-                                    Radius.circular(defaultBorderRadius)),
-                            child: AnimatedTextKit(
-                              repeatForever: true,
-                              animatedTexts: [
-                                ColorizeAnimatedText(
-                                  snapshot.data!,
-                                  textStyle: TextStyle(
-                                    fontSize:
-                                        snapshot.data!.length > 7 ? 40 : 80,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  colors: colorizeColors,
-                                ),
-                              ],
-                              isRepeatingAnimation: true,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
+                      userType: userType,
+                      dataToBeFetched: () => getTotalIncentiveCount())
                 ],
               ),
             ),

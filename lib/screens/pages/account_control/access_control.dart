@@ -36,11 +36,6 @@ class _AccessControlState extends State<AccessControl> {
       await databaseHelper.deleteEverything().then((value) {
         return Navigator.pushReplacement(
           context,
-          // MaterialPageRoute(
-          //   builder: (context) {
-          //     return const SplashScreen();
-          //   },
-          // ),
           MyCustomPageRoute(
             route: const SplashScreen(),
           ),
@@ -51,11 +46,6 @@ class _AccessControlState extends State<AccessControl> {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          // MaterialPageRoute(
-          //   builder: (context) {
-          //     return const LoginScreen();
-          //   },
-          // ),
           MyCustomPageRoute(
             route: const LoginScreen(),
           ),
@@ -154,16 +144,6 @@ class _AccessControlState extends State<AccessControl> {
                                                   onPressed: () async {
                                                     await Navigator.push(
                                                       context,
-                                                      // MaterialPageRoute(
-                                                      //   builder: (context) {
-                                                      //     return ChangeAccountDetails(
-                                                      //       userModel: snapshot
-                                                      //           .data![index],
-                                                      //       adminAccountLength:
-                                                      //           adminAccountLength,
-                                                      //     );
-                                                      //   },
-                                                      // ),
                                                       MyCustomPageRoute(
                                                         route:
                                                             ChangeAccountDetails(
@@ -344,14 +324,6 @@ class _AccessControlState extends State<AccessControl> {
                                                   onPressed: () async {
                                                     await Navigator.push(
                                                       context,
-                                                      // MaterialPageRoute(
-                                                      //   builder: (context) {
-                                                      //     return ChangeAccountDetails(
-                                                      //       userModel: snapshot
-                                                      //           .data![index],
-                                                      //     );
-                                                      //   },
-                                                      // ),
                                                       MyCustomPageRoute(
                                                         route:
                                                             ChangeAccountDetails(
@@ -472,11 +444,6 @@ class _AccessControlState extends State<AccessControl> {
               onTap: () async {
                 await Navigator.push(
                   context,
-                  // MaterialPageRoute(
-                  //   builder: (context) {
-                  //     return const CreateAccount();
-                  //   },
-                  // ),
                   MyCustomPageRoute(
                     route: const CreateAccount(),
                   ),

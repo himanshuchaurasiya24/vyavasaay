@@ -51,6 +51,7 @@ String getDate({required String date}) {
   return formatDate;
 }
 
+bool isLoading = false;
 class _ShowIncentiveState extends State<ShowIncentive> {
   @override
   void initState() {
@@ -66,6 +67,9 @@ class _ShowIncentiveState extends State<ShowIncentive> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
+          setState(() {
+            isLoading = true;
+          });
           final pdfFile = await PdfApi.generateIncentive(
             incentiveList: widget.incentiveModelList,
             pName: widget.pName,
@@ -83,11 +87,12 @@ class _ShowIncentiveState extends State<ShowIncentive> {
             dName: widget.dName,
             orientation: widget.orientation,
           );
-          // print('PDF File: ${pdfFile.path}');
-          // PdfApi.openFile(file: pdfFile);
+          setState(() {
+            isLoading = false;
+          });
           PdfApi.openFile(path: pdfFile.path);
         },
-        label: Text(
+        label:isLoading?const CircularProgressIndicator.adaptive(): Text(
           'Generate PDF',
           style: patientChildrenHeading.copyWith(
             fontWeight: FontWeight.bold,

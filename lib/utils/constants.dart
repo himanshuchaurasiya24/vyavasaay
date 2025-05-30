@@ -11,7 +11,7 @@ double defaultSize = 20;
 double defaultPadding = 20;
 double defaultBorderRadius = 20;
 double titleLargeTextSize = 50;
-Color blackTile = Colors.black.withOpacity(0.7);
+Color blackTile = const Color.fromRGBO( 0, 0, 0, 0.7);
 TextStyle column = const TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.w700,
