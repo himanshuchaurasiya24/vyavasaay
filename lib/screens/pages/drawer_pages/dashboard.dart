@@ -308,11 +308,11 @@ Widget detailsContainer(
   double calculateFontSize(String value) {
     final number = int.tryParse(value.replaceAll(',', '')) ?? 0;
 
-    if (number < 10000) return 80;
-    if (number < 50000) return 70;
+    if (number < 1000) return 80;
+    if (number < 10000) return 70;
     if (number < 100000) return 60;
-    if (number < 500000) return 50;
-    if (number < 1000000) return 40;
+    if (number < 1000000) return 50;
+    if (number < 10000000) return 40;
     return 30; // For very large numbers
   }
 

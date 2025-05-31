@@ -83,7 +83,6 @@ CREATE TABLE IF NOT EXISTS patientTable(
         await databaseFactoryy.getDatabasesPath(),
         databaseName,
       );
-
     } else {
       databaseFactoryy = databaseFactory;
       path = join(
