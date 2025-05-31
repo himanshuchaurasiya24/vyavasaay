@@ -90,6 +90,7 @@ class _ShowIncentiveState extends State<ShowIncentive> {
           setState(() {
             isLoading = false;
           });
+          debugPrint(pdfFile.path);
           PdfApi.openFile(path: pdfFile.path);
         },
         label:isLoading?const CircularProgressIndicator.adaptive(): Text(
